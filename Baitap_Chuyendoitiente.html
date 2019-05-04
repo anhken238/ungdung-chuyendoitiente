@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>NguyenDucAnh</title>
+</head>
+<body>
+	<form name="cdtt" action="#" method="get" onsubmit="return babyForm()" accept-charset="utf-8">
+		Amount <input id="amount" type="number" name="Amount"/>
+		From Currency
+		<select type="text" id="slts">
+			<option value="vn" >VietNam</option>
+			<option value="usd">USD</option>
+		</select>	
+		Tocurrency
+		<select type="text" id="slte" ">
+			<option value="usd" >USD</option>
+			<option value="vn">VietNam</option>
+		</select>
+	<input id="sub" type="submit" name="btn" value="Convert" onclick="start()">
+	</form>
+	<script >
+		function babyForm()
+	{
+		var a = document.forms["cdtt"]["amount"].value;
+		if ((a==="")||(a<=0)){ alert("Bạn chưa nhập mệnh giá cần quy đổi hoặc giá trị mệnh giá quy đổi không hợp lệ"); return false;}
+		start();
+	}
+	
+	function start(){ 
+			var a = document.forms["cdtt"]["amount"].value;
+			let s=document.getElementById("slts").value;
+			let e=document.getElementById("slte").value;
+			if ((s=="vn")&&(e=="usd")) { let tt = a/23000; document.write("thành tiền USD là " +tt);}
+			else if (((s=="vn")&&(e=="vn"))||((s=="usd")&&(e=="vnd")))
+				{let tt= a; document.write("thành tiền là " +tt);}
+			else if ((s=="usd")&&(e=="vn")) { let tt=a*23000; document.write("thành tiền VietNam là " +tt);}
+			else {alert("tao quỳ mày rồi :v");}
+		}
+		</script>
+</body>
+</html>
